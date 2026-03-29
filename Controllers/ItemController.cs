@@ -162,7 +162,7 @@ namespace ItemProcessingSystemCore.Controllers
                         return RedirectToAction(nameof(Process));
                     }
 
-                    if (WouldCreateCycle(parentId, childId, existingRelations))
+                    if (ItemProcessingSystemCore.Helpers.CycleDetector.WouldCreateCycle(parentId, childId, existingRelations))
                     {
                         TempData["ErrorMessage"] = "That would create a circular dependency.";
                         return RedirectToAction(nameof(Process));
@@ -199,24 +199,7 @@ namespace ItemProcessingSystemCore.Controllers
             return View();
         }
 
-        private bool WouldCreateCycle(int parentId, int childId, List<ItemRelation> relations)
-        {
-            if (parentId == childId) return true;
-            return IsAncestor(childId, parentId, relations, new HashSet<int>());
-        }
 
-        private bool IsAncestor(int nodeId, int suspectedAncestor, List<ItemRelation> relations, HashSet<int> visited)
-        {
-            if (visited.Contains(nodeId)) return false;
-            visited.Add(nodeId);
-
-            foreach (var pid in relations.Where(r => r.ChildItemId == nodeId).Select(r => r.ParentItemId))
-            {
-                if (pid == suspectedAncestor) return true;
-                if (IsAncestor(pid, suspectedAncestor, relations, visited)) return true;
-            }
-            return false;
-        }
 
         private string BuildTreeHtml(List<Item> items, List<ItemRelation> relations)
         {
