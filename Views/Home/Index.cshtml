@@ -1,8 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4 fw-bold mb-3">Item Processing System</h1>
+    <p class="lead text-muted mb-5">Manage items, build relational hierarchies, and prevent circular dependencies.</p>
+    
+    <div class="row justify-content-center gap-3">
+        <div class="col-md-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">📦 Items</h5>
+                    <p class="card-text text-muted small">Create, edit, and manage your core items.</p>
+                    <a asp-controller="Item" asp-action="Index" class="btn btn-outline-primary btn-sm w-100">Manage Items</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🔗 Process</h5>
+                    <p class="card-text text-muted small">Link items together as parents and children.</p>
+                    <a asp-controller="Item" asp-action="Process" class="btn btn-outline-success btn-sm w-100">Create Relations</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🌳 Tree View</h5>
+                    <p class="card-text text-muted small">Visualize the entire relational database structure.</p>
+                    <a asp-controller="Item" asp-action="Tree" class="btn btn-outline-warning btn-sm w-100">View Hierarchy</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
