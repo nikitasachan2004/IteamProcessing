@@ -1,0 +1,45 @@
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IDE specific files
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.local
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Logs
+*.log
+logs/
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
