@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Item Tree";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Item Hierarchy Tree</h2>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary btn-sm">Back to Items</a>
+        <a asp-action="Process" class="btn btn-success btn-sm ms-2">Create Relations</a>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@{
+    var treeHtml = ViewBag.TreeHtml as string;
+}
+
+@if (!string.IsNullOrEmpty(treeHtml))
+{
+    @Html.Raw(treeHtml)
+}
+else
+{
+    <p class="text-danger">Unable to render tree.</p>
+}
